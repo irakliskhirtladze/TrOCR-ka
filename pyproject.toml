@@ -8,5 +8,8 @@ requires-python = ">=3.10"
 [tool.uv.workspace]
 members = [
     "api",
-    "ml_training",
+    "ml_training"
+]
+exclude = [
+    "dataset_gen"
 ]

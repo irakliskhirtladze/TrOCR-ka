@@ -1,0 +1,16 @@
+[project]
+name = "dataset-gen"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = "==3.10.*"
+dependencies = [
+    "arabic-reshaper>=3.0.0",
+    "diffimg>=0.3.0",
+    "huggingface-hub>=1.2.4",
+    "pymupdf>=1.26.7",
+    "python-bidi>=0.6.7",
+    "python-docx>=1.2.0",
+    "python-dotenv>=1.2.1",
+    "trdg>=0.1.1",
+]
