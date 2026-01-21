@@ -117,20 +117,6 @@ def _generate_for_font(args: tuple) -> list[dict]:
     
     # Generate images one string at a time
     for idx, text in enumerate(strings):
-        # generator = GeneratorFromStrings(
-        #     strings=[text],
-        #     fonts=[font_path],
-        #     language="ka",
-        #     size=64,
-        #     skewing_angle=5,
-        #     random_skew=True,
-        #     blur=1,
-        #     random_blur=True,
-        #     distorsion_type=3,
-        #     distorsion_orientation=2,
-        #     background_type=0,
-        #     text_color="#000000,#1a1a1a,#333333,#2b1a1a,#1a0f0f,#3d2b2b,#4a0000,#2d1f1f"
-        # )
         generator = GeneratorFromStrings(
             strings=[text],
             fonts=[font_path],

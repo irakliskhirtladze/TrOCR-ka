@@ -207,6 +207,8 @@ marimo/_lsp/
 __marimo__/
 
 
+data/
+
 dataset_gen/data/
 dataset_gen/.venv/
 dataset_gen/.env
