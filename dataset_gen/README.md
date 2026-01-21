@@ -50,6 +50,8 @@ python main.py
    - 7% random character sequences
    - 3% numbers/dates (except 4 fonts that do not support them)
    - Program supports both sequential and parallel data generation.
+   - writes version.txt with current UTC datetime string for simple versioning 
+   (YYYY-MM-DD-hh-mm-ss)
    The latter can produce dataset few times faster, so it's generally recommended.
 
 2. **Upload to HF** (optional): 
@@ -72,4 +74,5 @@ data/
 │   └── ...
 ├── metadata.csv                # Image labels (gitignored)
 └── ka-ocr.zip                  # Zipped dataset for HF (gitignored)
+└── ka-ocr.zip                  # version file (gitignored)
 ```

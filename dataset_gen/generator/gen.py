@@ -1,5 +1,6 @@
 import json
 import time
+from datetime import datetime
 
 from trdg.generators import GeneratorFromStrings
 from utils import BASE_DIR
@@ -153,6 +154,14 @@ def _generate_for_font(args: tuple) -> list[dict]:
     return metadata
 
 
+def write_version(file_path: Path):
+    """Writes version timestamp to file (UTC)."""
+    current_timestamp = datetime.utcnow().strftime("%Y-%m-%d-%H-%M-%S")
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(current_timestamp)
+    print(f"Version {current_timestamp} (UTC) saved to {file_path}")
+
+
 def generate_imgs(num_images_per_font: int):
     """Generate synthetic images for all fonts.
 
@@ -241,12 +250,16 @@ def generate_imgs(num_images_per_font: int):
     print(f"\n✓ Finished! {len(metadata)} images saved to {output_dir}")
     print(f"✓ Labels saved to {csv_path}")
 
+    # Write version file
+    write_version(BASE_DIR / "data" / "version.txt")
+
 
 def zip_dataset():
     """Zip the dataset preserving font subdirectory structure."""
     data_dir = BASE_DIR / "data"
     raw_dir = data_dir / "raw"
     metadata_file = data_dir / "metadata.csv"
+    version_file = data_dir / "version.txt"
     zip_path = data_dir / "ka-ocr.zip"
 
     # Verify data exists
@@ -271,8 +284,9 @@ def zip_dataset():
             arcname = img_file.relative_to(raw_dir)
             zipf.write(img_file, arcname=arcname)
 
-        # Add metadata.csv to zip root
+        # Add metadata.csv and version.txt to zip root
         zipf.write(metadata_file, arcname="metadata.csv")
+        zipf.write(version_file, arcname="version.txt")
 
     zip_size_mb = zip_path.stat().st_size / (1024 * 1024)
     t2 = time.perf_counter()
