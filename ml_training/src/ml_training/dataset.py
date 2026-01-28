@@ -70,6 +70,7 @@ def prepare_dataset() -> Path:
 
     local_version_path = data_dir / "version.txt"
 
+    print("Downloading version file from HuggingFace for comparison...")
     should_download, hf_version = needs_download(hf_repo, hf_token, local_version_path)
 
     if should_download:
